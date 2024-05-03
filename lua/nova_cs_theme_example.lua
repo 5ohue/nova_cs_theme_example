@@ -27,10 +27,6 @@ local function create_groups(p)
         Cursor          = { fg = 'NONE',                    bg = 'NONE', reverse = true },  -- The character under the cursor
         CursorIM        = { link = 'Cursor' },                                              -- Like Cursor, but used when in IME mode
         Directory       = { fg = p.bright.blue,             bg = 'NONE', bold = true },     -- Directory names (and other special names in listings)
-        DiffAdd         = { fg = p.normal.green,            bg = 'NONE' },                  -- diff mode: Added line
-        DiffChange      = { fg = p.normal.blue,             bg = 'NONE' },                  -- diff mode: Changed line
-        DiffDelete      = { fg = p.normal.red,              bg = 'NONE' },                  -- diff mode: Deleted line
-        DiffText        = { fg = p.fg,                      bg = 'NONE' },                  -- diff mode: Changed text within a changed line
         ErrorMsg        = { fg = p.bright.red },                                            -- error messages
         Folded          = { fg = p.gray_13,                 bg = 'NONE', italic = true },
         -- FoldColumn = { fg = p.blue },
@@ -168,6 +164,32 @@ local function create_groups(p)
         markdownCodeDelimiter     = { fg = p.normal.magenta, bg = 'NONE' },
     }
 
+    M.groups.diff = {
+        -- Diff
+        diffAdded     = { fg = p.bright.green },
+        diffRemoved   = { fg = p.bright.red },
+        diffChanged   = { fg = p.bright.blue },
+        diffOldFile   = { fg = p.gray_40 },
+        diffNewFile   = { fg = p.bright.fg },
+        diffFile      = { fg = p.gray_50 },
+        diffLine      = { fg = p.bright.cyan },
+        diffIndexLine = { fg = p.bright.magenta },
+        DiffAdd       = { fg = p.bright.green },     -- diff mode: Added line
+        DiffChange    = { fg = p.bright.blue },      -- diff mode: Changed line
+        DiffDelete    = { fg = p.bright.red },       -- diff mode: Deleted line
+        DiffText      = { fg = p.fg },               -- diff mode: Changed text within a changed line
+        -- Git signs
+        GitSignsAdd      = { fg = p.normal.green },  -- diff mode: Added line |diff.txt|
+        GitSignsAddNr    = { fg = p.normal.green },  -- diff mode: Added line |diff.txt|
+        GitSignsAddLn    = { fg = p.normal.green },  -- diff mode: Added line |diff.txt|
+        GitSignsChange   = { fg = p.normal.yellow }, -- diff mode: Changed line |diff.txt|
+        GitSignsChangeNr = { fg = p.normal.yellow }, -- diff mode: Changed line |diff.txt|
+        GitSignsChangeLn = { fg = p.normal.yellow }, -- diff mode: Changed line |diff.txt|
+        GitSignsDelete   = { fg = p.normal.red },    -- diff mode: Deleted line |diff.txt|
+        GitSignsDeleteNr = { fg = p.normal.red },    -- diff mode: Deleted line |diff.txt|
+        GitSignsDeleteLn = { fg = p.normal.red },    -- diff mode: Deleted line |diff.txt|
+    }
+
     M.groups.dashboard = {
         -- DashboardShortCut = { fg = p.red },
         -- DashboardHeader = { fg = p.magenta },
@@ -269,12 +291,20 @@ local function create_groups(p)
         -- BufTabLineFill              = { fg = p.normal.magenta, fg = p.normal.green },
     }
 
+    M.groups.whichkey = {
+        WhichKey          = { fg = p.bright.magenta },
+        WhichKeyGroup     = { fg = p.bright.yellow, italic = true },
+        WhichKeyDesc      = { fg = p.bright.blue },
+        WhichKeySeperator = { fg = p.gray_50 },
+        WhichKeyFloating  = { bg = p.gray_10 },
+        WhichKeyFloat     = { bg = p.gray_10 },
+    }
+
     M.groups.groups = {
         -- -- highlight groups for the native LSP client
         -- LspReferenceText = { fg = p.bg, bg = p.magenta }, -- used for highlighting "text" references
         -- LspReferenceRead = { fg = p.bg, bg = p.magenta }, -- used for highlighting "read" references
         -- LspReferenceWrite = { fg = p.bg, bg = p.magenta }, -- used for highlighting "write" references
-        -- -- Diagnostics
         -- -- Diagnostics (old)
         -- LspDiagnosticsDefaultError = { fg = p.red }, -- used for "Error" diagnostic virtual text
         -- LspDiagnosticsSignError = { fg = p.red }, -- used for "Error" diagnostic signs in sign column
@@ -301,25 +331,6 @@ local function create_groups(p)
         -- LspTroubleText = { fg = p.gray04 },
         -- LspTroubleCount = { fg = p.magenta, bg = p.gray03 },
         -- LspTroubleNormal = { fg = p.fg, bg = p.bg },
-        -- -- Diff
-        -- diffAdded = { fg = p.green },
-        -- diffRemoved = { fg = p.red },
-        -- diffChanged = { fg = p.blue },
-        -- diffOldFile = { fg = p.gray04 },
-        -- diffNewFile = { fg = p.fg },
-        -- diffFile = { fg = p.gray05 },
-        -- diffLine = { fg = p.cyan },
-        -- diffIndexLine = { fg = p.magenta },
-        -- -- GitSigns
-        -- GitSignsAdd = { fg = p.green }, -- diff mode: Added line |diff.txt|
-        -- GitSignsAddNr = { fg = p.green }, -- diff mode: Added line |diff.txt|
-        -- GitSignsAddLn = { fg = p.green }, -- diff mode: Added line |diff.txt|
-        -- GitSignsChange = { fg = p.yellow }, -- diff mode: Changed line |diff.txt|
-        -- GitSignsChangeNr = { fg = p.yellow }, -- diff mode: Changed line |diff.txt|
-        -- GitSignsChangeLn = { fg = p.yellow }, -- diff mode: Changed line |diff.txt|
-        -- GitSignsDelete = { fg = p.red }, -- diff mode: Deleted line |diff.txt|
-        -- GitSignsDeleteNr = { fg = p.red }, -- diff mode: Deleted line |diff.txt|
-        -- GitSignsDeleteLn = { fg = p.red }, -- diff mode: Deleted line |diff.txt|
         -- -- Telescope
         -- TelescopeSelectionCaret = { fg = 'NONE', bg = p.gray02 },
         -- TelescopeBorder = { fg = p.gray02 },
@@ -338,13 +349,6 @@ local function create_groups(p)
         -- ALEVirtualTextError = { fg = p.red },
         -- ALEVirtualTextWarning = { fg = p.yellow },
         -- ALEVirtualTextInfo = { fg = p.blue },
-        -- -- WhichKey
-        -- WhichKey = { fg = p.blue },
-        -- WhichKeyGroup = { fg = p.yellow, italic = true },
-        -- WhichKeyDesc = { fg = p.blue },
-        -- WhichKeySeperator = { fg = p.gray05 },
-        -- WhichKeyFloating = { bg = p.gray01 },
-        -- WhichKeyFloat = { bg = p.gray01 },
         -- -- LspSaga
         -- LspSagaFinderSelection = { fg = p.magenta },
         -- LspSagaLspFinderBorder = { fg = p.gray05 },
@@ -381,14 +385,12 @@ local function create_groups(p)
         -- LspSagaDiagnosticBorder = { fg = p.gray05 },
         -- LspSagaDiagnosticHeader = { fg = p.gray07 },
         -- LspSagaDiagnosticTruncateLine = { fg = p.gray05 },
-        -- -- BufferLine
         -- -- Sneak
         -- Sneak = { fg = p.bg, bg = p.blue },
         -- SneakScope = { bg = p.gray04 },
         -- -- Indent Blankline
         -- IndentBlanklineChar = { fg = p.indentGuideBg },
         -- IndentBlanklineContextChar = { fg = p.indentGuideActiveBg },
-        -- -- nvim-cmp
         -- -- mini.nvim
         -- MiniStatuslineModeNormal = { fg = p.bg, bg = p.normalMode },
         -- MiniStatuslineModeInsert = { fg = p.bg, bg = p.insertMode },
