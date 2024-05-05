@@ -92,8 +92,8 @@ local function create_groups(p)
         Repeat          = { fg = p.bright.green,    bg = 'NONE', bold = true }, -- italic any other keyword
         Boolean         = { fg = p.normal_bright_50.green, bg = 'NONE' }, -- true , false
         Function        = { fg = p.bright.yellow,   bg = 'NONE', bold = true },
-        Identifier      = { fg = p.fg, bg = 'NONE' }, -- any variable name
-        String          = { fg = p.normal_bright_50.yellow, bg = 'NONE' }, -- Any string
+        Identifier      = { fg = 'NONE',            bg = 'NONE' }, -- any variable name
+        String          = { fg = p.bright_fg_50.red, bg = 'NONE' }, -- Any string
         Character       = { fg = p.normal.yellow, bg = 'NONE' }, -- any character constant: 'c', '\n'
         Number          = { fg = p.mixed_bright.green_cyan }, -- a number constant: 5
         Float           = { fg = p.mixed_bright.green_cyan }, -- a floating point constant: 2.3e10
@@ -188,6 +188,7 @@ local function create_groups(p)
         GitSignsDelete   = { fg = p.normal.red },    -- diff mode: Deleted line |diff.txt|
         GitSignsDeleteNr = { fg = p.normal.red },    -- diff mode: Deleted line |diff.txt|
         GitSignsDeleteLn = { fg = p.normal.red },    -- diff mode: Deleted line |diff.txt|
+        GitSignsCurrentLineBlame = { fg = p.gray_20 }
     }
 
     M.groups.dashboard = {
@@ -209,7 +210,7 @@ local function create_groups(p)
         ['@keyword.import']                   = { link = 'Include' },
 
         ['@variable']                         = { fg = p.fg },
-        ['@variable.member']                  = { fg = p.bright.blue },
+        ['@variable.member']                  = { fg = p.bright_fg_50.blue },
         ['@variable.parameter']               = { fg = p.gray_50 },
 
         ['@comment']                          = { link = 'Comment' },
@@ -220,11 +221,12 @@ local function create_groups(p)
         ['@function.builtin']                 = { fg = p.mixed_bright.red_yellow },
         ['@function.macro']                   = { link = 'Macro' },
 
-        ['@lsp.typemod.enumMember.readonly']  = { fg = p.mixed_normal.green_cyan },
+        ['@lsp.typemod.enumMember.readonly']  = { fg = p.mixed_bright_fg_25.green_cyan },
         ['@lsp.typemod.namespace']            = { link = '@module' },
-        ['@lsp.typemod.variable.static']      = { fg = p.mixed_bright.blue_magenta },
+        ['@lsp.typemod.variable.static']      = { fg = p.mixed_bright_fg_50.blue_magenta },
         ['@lsp.typemod.variable.globalScope'] = { link = '@lsp.typemod.variable.static' },
         ['@lsp.typemod.variable.readonly']    = { link = 'Constant' },
+        ['@lsp.typemod.property.classScope']  = { link = '@variable.member' },
         ['@lsp.type.comment']                 = { link = 'Comment' },
         ['@lsp.type.parameter']               = { link = '@variable.parameter' },
         ['@lsp.mod.declaration']              = { bold = true },
