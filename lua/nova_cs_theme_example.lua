@@ -229,6 +229,8 @@ local function create_groups(p)
         ['@lsp.typemod.property.classScope']  = { link = '@variable.member' },
         ['@lsp.type.comment']                 = { link = 'Comment' },
         ['@lsp.type.parameter']               = { link = '@variable.parameter' },
+        ['@lsp.type.keyword']                 = { link = 'Keyword' },
+        ['@lsp.type.macro']                   = { link = 'Macro' },
         ['@lsp.mod.declaration']              = { bold = true },
     }
 
@@ -465,33 +467,33 @@ function create_lualine_theme(p)
     M.lualine = {
         normal = {
             a = { fg = p.fg, bg = p.bg_normal_75.green, gui = 'bold' },
-            b = { fg = p.fg, bg = p.bg_normal_50.green },
-            c = { fg = p.fg, bg = p.bg_normal_25.green }
+            b = { fg = p.fg, bg = p.gray_10},
+            c = { fg = p.fg, bg = p.gray_n03 }
         },
         insert = {
             a = { fg = p.fg, bg = p.bg_normal_75.yellow, gui = 'bold' },
-            b = { fg = p.fg, bg = p.bg_normal_50.yellow },
-            c = { fg = p.fg, bg = p.bg_normal_25.yellow }
+            b = { fg = p.fg, bg = p.gray_10},
+            c = { fg = p.fg, bg = p.gray_n03 }
         },
         visual = {
             a = { fg = p.fg, bg = p.bg_normal_75.blue, gui = 'bold' },
-            b = { fg = p.fg, bg = p.bg_normal_50.blue },
-            c = { fg = p.fg, bg = p.bg_normal_25.blue }
+            b = { fg = p.fg, bg = p.gray_10},
+            c = { fg = p.fg, bg = p.gray_n03 }
         },
         replace = {
             a = { fg = p.fg, bg = p.bg_normal_75.red, gui = 'bold' },
-            b = { fg = p.fg, bg = p.bg_normal_50.red },
-            c = { fg = p.fg, bg = p.bg_normal_25.red }
+            b = { fg = p.fg, bg = p.gray_10},
+            c = { fg = p.fg, bg = p.gray_n03 }
         },
         command = {
             a = { fg = p.fg, bg = p.bg_normal_75.magenta, gui = 'bold' },
-            b = { fg = p.fg, bg = p.bg_normal_50.magenta },
-            c = { fg = p.fg, bg = p.bg_normal_25.magenta }
+            b = { fg = p.fg, bg = p.gray_10},
+            c = { fg = p.fg, bg = p.gray_n03 }
         },
         inactive = {
             a = { fg = p.fg, bg = p.gray_50, gui = 'bold' },
-            b = { fg = p.fg, bg = p.gray_25 },
-            c = { fg = p.fg, bg = p.gray_12 }
+            b = { fg = p.fg, bg = p.gray_10},
+            c = { fg = p.fg, bg = p.gray_n03 }
         }
     }
 end
