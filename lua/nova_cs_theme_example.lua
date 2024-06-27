@@ -521,6 +521,24 @@ M.set_colorscheme = function()
     for _, group in pairs(M.groups) do
         apply_groups(group)
     end
+
+    -- Apply neovim terminal colors
+    vim.g.terminal_color_0 =  M.bg
+    vim.g.terminal_color_1 =  M.p.normal.red
+    vim.g.terminal_color_2 =  M.p.normal.green
+    vim.g.terminal_color_3 =  M.p.normal.yellow
+    vim.g.terminal_color_4 =  M.p.normal.blue
+    vim.g.terminal_color_5 =  M.p.normal.magenta
+    vim.g.terminal_color_6 =  M.p.normal.cyan
+    vim.g.terminal_color_7 =  M.p.gray80
+    vim.g.terminal_color_8 =  M.p.gray05
+    vim.g.terminal_color_9 =  M.p.bright.red
+    vim.g.terminal_color_10 = M.p.bright.green
+    vim.g.terminal_color_11 = M.p.bright.yellow
+    vim.g.terminal_color_12 = M.p.bright.blue
+    vim.g.terminal_color_13 = M.p.bright.magenta
+    vim.g.terminal_color_14 = M.p.bright.cyan
+    vim.g.terminal_color_15 = M.p.fg
 end
 
 return M
