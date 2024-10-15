@@ -229,6 +229,7 @@ local function create_groups(p)
         ['@lsp.typemod.property.classScope']  = { link = '@variable.member' },
         ['@lsp.type.comment']                 = { link = 'Comment' },
         ['@lsp.type.parameter']               = { link = '@variable.parameter' },
+        ['@lsp.type.property']                = { link = '@variable.member' },
         ['@lsp.type.keyword']                 = { link = 'Keyword' },
         ['@lsp.type.macro']                   = { link = 'Macro' },
         ['@lsp.mod.declaration']              = { bold = true },
