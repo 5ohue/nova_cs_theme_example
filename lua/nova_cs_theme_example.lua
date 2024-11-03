@@ -230,7 +230,7 @@ local function create_groups(p)
         ['@lsp.type.comment']                 = { link = 'Comment' },
         ['@lsp.type.parameter']               = { link = '@variable.parameter' },
         ['@lsp.type.property']                = { link = '@variable.member' },
-        ['@lsp.type.keyword']                 = { link = 'Keyword' },
+        ['@lsp.type.keyword']                 = { },
         ['@lsp.type.macro']                   = { link = 'Macro' },
         ['@lsp.mod.declaration']              = { bold = true },
     }
